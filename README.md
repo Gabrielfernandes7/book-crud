@@ -1,4 +1,4 @@
-# CRUD cadastro de pizzas
+# CRUD cadastro de pizzas :pizza:
 
 ## Criar ambiente virtual no Windows
 
