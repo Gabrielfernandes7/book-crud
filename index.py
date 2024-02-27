@@ -1,1 +1,3 @@
-print("API FastAPI")
+from fastapi import FastAPI
+
+app = FastAPI()
