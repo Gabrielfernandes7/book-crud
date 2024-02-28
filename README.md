@@ -1,4 +1,4 @@
-# CRUD cadastro de pizzas :pizza:
+# CRUD cadastro de livros :book:
 
 ## Criar ambiente virtual no Windows
 
@@ -12,3 +12,9 @@
     ```bash
     source venv/Scripts/activate
     ```
+
+## Rodar a aplicação
+
+```bash
+python -m uvicorn <nome-do-arquivo-principal>:app --reload
+```
