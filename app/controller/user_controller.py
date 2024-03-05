@@ -10,7 +10,7 @@ user_service = UserService()
 async def create_user(name: str, email: str):
     db = SessionLocal()
     user = User(name=name, email=email)
-    created_user = user_service.create_user(db, user)
+    created_user = user_service.create_user(db, name, email)
     return user
 
 @router.get("/users/{user_id}")

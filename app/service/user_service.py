@@ -1,4 +1,5 @@
 from app.model import User
+from fastapi import HTTPException
 
 class UserService:
 
@@ -10,9 +11,15 @@ class UserService:
         db.add(user)
         db.commit() # persistir a mudança no banco de dados
         db.refresh(user)
+
         return user
     
     def get_user(self, db, user_id: int):
-        return db.query(User).filter(
+        user = db.query(User).filter(
             User.id == user_id
         ).first()
+
+        if user is None:
+            raise HTTPException(status_code=404, detail="user not found")
+        
+        return user
