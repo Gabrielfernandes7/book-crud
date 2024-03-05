@@ -11,7 +11,6 @@ class UserService:
         db.add(user)
         db.commit() # persistir a mudança no banco de dados
         db.refresh(user)
-
         return user
     
     def get_user(self, db, user_id: int):
@@ -21,5 +20,4 @@ class UserService:
 
         if user is None:
             raise HTTPException(status_code=404, detail="user not found")
-        
         return user
