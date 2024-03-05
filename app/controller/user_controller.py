@@ -1,18 +1,20 @@
-from app import app
+from fastapi import APIRouter, HTTPException
+from app.service.user_service import UserService
 from config.database import SessionLocal
 from model.user_model import User
 
-@app.post("/users/")
+router = APIRouter()
+user_service = UserService()
+
+@router.post("/users/")
 async def create_user(name: str, email: str):
     db = SessionLocal()
-    db_user = User(name=name, email=email)
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
+    user = User(name=name, email=email)
+    created_user = user_service.create_user(db, user)
+    return user
 
-@app.get("/users/{user_id}")
-async def read_item(item_id: int):
+@router.get("/users/{user_id}")
+async def read_user(user_id: int):
     db = SessionLocal()
-    item = db.query(User).filter(User.id == item_id).first()
-    return item
+    user = user_service.get_user(db, user_id)
+    return user

@@ -35,3 +35,21 @@
 ```bash
 python -m uvicorn <nome-do-arquivo-principal>:app --reload
 ```
+
+## Models vs Schemas
+
+### Schemas no FastAPI
+
+Frequentemente denominado como Pydantic model, são utilizados para a validação de dados e serialização
+
+Eles definem a estrutura e tipo de dado que sua API espera receber (input) ou envia (output)
+
+Diferente do models, eles não se ligam diretamente ao banco de dados, mas são usados para validare coverte entre tipo Python e JSON
+
+### SQLAlchemy models
+
+SQLAlchemy models, por outro lado, se conecta diretamente ao banco de dados
+
+### Diferenças entre `schema` e `model`
+
+No FastAPI, é comum usar o Pydantic schemas para validar e trasferir dados, enquanto o model lida com as interações com o banco de dados
